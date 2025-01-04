@@ -649,6 +649,7 @@ class YahooNormalizeUS1min(YahooNormalizeUS, YahooNormalize1min):
 class YahooNormalizeIN:
     def _get_calendar_list(self) -> Iterable[pd.Timestamp]:
         return get_calendar_list("IN_ALL")
+        # return None
 
 
 class YahooNormalizeIN1d(YahooNormalizeIN, YahooNormalize1d):

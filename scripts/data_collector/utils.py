@@ -35,7 +35,9 @@ CALENDAR_BENCH_URL_MAP = {
     "ALL": CALENDAR_URL_BASE.format(market=1, bench_code="000905"),
     # NOTE: Use the time series of ^GSPC(SP500) as the sequence of all stocks
     "US_ALL": "^GSPC",
-    "IN_ALL": "^NSEI",
+    # "IN_ALL": "^NSEI",
+    # NOTE: BSESN goes back to 1997 whereas NSEI goes back to 2007
+    "IN_ALL": "^BSESN",
     "BR_ALL": "^BVSP",
 }
 
@@ -347,8 +349,9 @@ def get_in_stock_symbols(qlib_data_path: [str, Path] = None) -> list:
 
     @deco_retry
     def _get_nifty():
-        url = f"https://www1.nseindia.com/content/equities/EQUITY_L.csv"
-        df = pd.read_csv(url)
+        # url = f"https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
+        path = "/Users/vijinkp/projects/recepto/qlib-data/indian-stocks/EQUITY_L.csv"
+        df = pd.read_csv(path)
         df = df.rename(columns={"SYMBOL": "Symbol"})
         df["Symbol"] = df["Symbol"] + ".NS"
         _symbols = df["Symbol"].dropna()
