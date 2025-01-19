@@ -668,6 +668,10 @@ class YahooNormalizeIN1min(YahooNormalizeIN, YahooNormalize1min):
 
     def symbol_to_yahoo(self, symbol):
         return fname_to_code(symbol)
+    
+
+class YahooNormalizeIN1dExtend(YahooNormalizeIN, YahooNormalize1dExtend):
+    pass
 
 
 class YahooNormalizeCN:
